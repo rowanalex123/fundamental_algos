@@ -1,23 +1,34 @@
-package com.example.project.hackerrank.implementation.q1;
+package com.example.project.hackerrank.implementation.q2;
 
 import java.io.*;
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.IntConsumer;
 import java.util.stream.IntStream;
 
 public class Solution {
 
     private void run() throws Exception {
-        int tests = in.nextInt();
-        forn(tests, notUsed -> {
-            long n = in.nextLong(), sweets = in.nextLong(), start = in.nextLong();
-            op.out("{}", (((start - 1) + (sweets - 1)) % n) + 1);
-        });
+            int len = in.nextInt(), rotations = in.nextInt(), q = in.nextInt();
+            int[] inp = new int[len];
+            forn(len, i -> inp[i] = in.nextInt());
+            BiFunction<Integer, Integer, Integer> moveCircular = (startIdx, pos) -> {
+                startIdx += pos;
+                int length = len;
+                while (startIdx >= length) startIdx -= length;
+                while (startIdx < 0) startIdx += length;
+                return startIdx;
+            };
+
+            forn(q, pos -> {
+                int tgtPos = moveCircular.apply(in.nextInt(), rotations * -1);
+                out.log("{} moved to {} on {} rotations", pos, tgtPos, rotations);
+                out.write("{}", inp[tgtPos]);
+            });
     }
 
 
@@ -29,7 +40,7 @@ public class Solution {
 
 
 
-    private final OutputHelper op = new OutputHelper();
+    private final OutputHelper out = new OutputHelper();
     static final boolean devMode = "bsrinivasaraghav".equalsIgnoreCase(System.getenv("DEFAULT_USER"));
     static final String basePath = Solution.class.getResource(".").getPath() + File.separator;
     static final Scanner in = new Scanner(new BufferedInputStream(devMode ? executeQuitely(() -> new FileInputStream(basePath + "input.txt")) : System.in), "ISO-8859-1");
@@ -60,8 +71,8 @@ public class Solution {
      */
     public static void main(String[] args) throws Exception {
         Solution instance = new Solution();
-        instance.run();
-        instance.op.endJob();
+        while (in.hasNext()) instance.run();
+        instance.out.endJob();
     }
 
 
@@ -109,7 +120,7 @@ public class Solution {
             System.out.println(msg);
         }
 
-        public void out(String template, Object... args) {
+        public void write(String template, Object... args) {
             FormattingTuple formattingTuple = new MessageFormatter().arrayFormat(template, args);
             String msg = formattingTuple.toString() + "\n";
             System.out.print(msg);

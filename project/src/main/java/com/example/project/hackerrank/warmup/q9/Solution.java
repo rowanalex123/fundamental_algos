@@ -1,4 +1,4 @@
-package com.example.project.hackerrank.q9;
+package com.example.project.hackerrank.warmup.q9;
 
 import java.io.*;
 import java.text.DecimalFormat;

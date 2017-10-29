@@ -1,6 +1,5 @@
-package com.example.project.hackerrank.q2;
+package com.example.project.hackerrank.warmup.q2;
 
-import java.text.MessageFormat;
 import java.util.Arrays;
 
 public class Scratch {

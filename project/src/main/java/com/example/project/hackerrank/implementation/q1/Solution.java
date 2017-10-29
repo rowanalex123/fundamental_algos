@@ -1,4 +1,4 @@
-package com.example.project.hackerrank.q9;
+package com.example.project.hackerrank.implementation.q1;
 
 import java.io.*;
 import java.text.DecimalFormat;
@@ -13,16 +13,11 @@ import java.util.stream.IntStream;
 public class Solution {
 
     private void run() throws Exception {
-        String inp;
-        while (in.hasNext() && (inp = in.next()) != null) {
-            String timeSuffix = inp.substring(3, inp.length() - 2);
-            boolean amTime = inp.contains("AM");
-            long hourInp = Long.parseLong(inp.substring(0, 2));
-            DecimalFormat df = new DecimalFormat("00");
-            if (amTime && hourInp == 12) hourInp = 0;
-            else if (!amTime && hourInp < 12) hourInp += 12;
-            op.out("{}", df.format(hourInp) + ":" + timeSuffix);
-        }
+        int tests = in.nextInt();
+        forn(tests, notUsed -> {
+            long n = in.nextLong(), sweets = in.nextLong(), start = in.nextLong();
+            op.out("{}", (((start - 1) + (sweets - 1)) % n) + 1);
+        });
     }
 
 

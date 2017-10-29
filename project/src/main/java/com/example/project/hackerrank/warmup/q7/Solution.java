@@ -1,4 +1,4 @@
-package com.example.project.hackerrank.q7;
+package com.example.project.hackerrank.warmup.q7;
 
 import java.io.*;
 import java.util.*;

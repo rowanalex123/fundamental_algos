@@ -1,4 +1,4 @@
-package com.example.project.hackerrank.q4;
+package com.example.project.hackerrank.warmup.q4;
 
 import java.io.*;
 import java.util.Arrays;
